@@ -29,3 +29,5 @@ func main() {
     log.Println(resp.Status)
 }
 ```
+# Notes
+If you experience any issues with the gitlab.com/yawning/utls import during installation, please try: `go get gitlab.com/yawning/utls`. Some path issue with go and gitlab ¯\\\_(ツ)_/¯

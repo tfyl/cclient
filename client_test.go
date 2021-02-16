@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	tls "gitlab.com/yawning/utls.git"
+	tls "gitlab.com/yawning/utls"
 )
 
 type JA3Response struct {
