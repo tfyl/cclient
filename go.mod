@@ -4,7 +4,8 @@ go 1.15
 
 require (
 	gitlab.com/yawning/utls.git v0.0.11-1
-	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de // indirect
-	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
-	golang.org/x/sys v0.0.0-20200602225109-6fdc65e7d980 // indirect
+	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad // indirect
+	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
+	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c // indirect
+	golang.org/x/text v0.3.5 // indirect
 )

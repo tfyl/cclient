@@ -3,7 +3,7 @@ package main
 import (
     "log"
 
-    "gitlab.com/yawning/utls.git"
+    "gitlab.com/yawning/utls"
     "github.com/delivey/cclient"
 )
 
