@@ -1,16 +1,9 @@
-# CClient
-
-Fixes TLS and stuff. Uses the yawning utls fork instead of the original refraction-networking one.
-
-# Example
-
-```go
 package main
 
 import (
     "log"
 
-    "gitlab.com/yawning/utls"
+    "gitlab.com/yawning/utls.git"
     "github.com/delivey/cclient"
 )
 
@@ -28,4 +21,3 @@ func main() {
 
     log.Println(resp.Status)
 }
-```
