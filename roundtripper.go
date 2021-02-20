@@ -82,7 +82,7 @@ func (rt *roundTripper) dialTLS(ctx context.Context, network, addr string) (net.
 	if host, _, err = net.SplitHostPort(addr); err != nil {
 		host = addr
 	}
-
+	_ = host
 	conn := utls.UClient(rawConn, &utls.Config{ServerName: host}, rt.clientHelloId)
 	if err = conn.Handshake(); err != nil {
 		_ = conn.Close()
