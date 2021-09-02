@@ -3,7 +3,7 @@ package cclient
 import (
 	"time"
 
-	http "github.com/useflyent/fhttp"
+	http "github.com/carcraftz/fhttp"
 	"golang.org/x/net/proxy"
 
 	utls "github.com/Titanium-ctrl/utls"
