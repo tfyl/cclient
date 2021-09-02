@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-    client, err := cclient.NewClient(tls.HelloChrome_Auto)
+    client, err := cclient.NewClient(tls.HelloChrome_Auto,"",true,6)
     if err != nil {
         log.Fatal(err)
     }
