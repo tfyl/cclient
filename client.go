@@ -9,9 +9,9 @@ import (
 	utls "github.com/Carcraftz/utls"
 )
 
-func NewClient(clientHello utls.ClientHelloID, proxyUrl string, allowRedirect bool, timeout time.Duration) (http.Client, error) {
+func NewClient(clientHello utls.ClientHelloID, userAgent string, proxyUrl string, allowRedirect bool, timeout time.Duration) (http.Client, error) {
 	if len(proxyUrl) > 0 {
-		dialer, err := newConnectDialer(proxyUrl)
+		dialer, err := newConnectDialer(userAgent, proxyUrl)
 		if err != nil {
 			if allowRedirect {
 				return http.Client{
