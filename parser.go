@@ -9,10 +9,28 @@ import (
 	"strings"
 )
 
-// ParseJSON  closes body and decodes resp body to pointer
+// ParseJSON closes body and decodes resp body to pointer
 func ParseJSON(resp *http.Response, dataOut interface{}) error {
 	data, err := ioutil.ReadAll(resp.Body)
-	resp.Body.Close()
+
+	ioreader := bytes.NewReader(data)
+
+	err = json.NewDecoder(ioreader).Decode(dataOut)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ParseFinalJSON closes body and decodes resp body to pointer
+func ParseFinalJSON(resp *http.Response, dataOut interface{}) error {
+	data, err := ioutil.ReadAll(resp.Body)
+
+	err = resp.Body.Close()
+	if err != nil {
+		return err
+	}
 
 	ioreader := bytes.NewReader(data)
 
