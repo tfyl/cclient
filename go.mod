@@ -3,7 +3,6 @@ module github.com/tfyl/cclient
 go 1.17
 
 require (
-	github.com/Carcraftz/fhttp v0.0.0-20210902023210-28df3f3a12b5
 	github.com/tfyl/utls v0.0.0-20210517235005-2594d3d85cdc
 	github.com/useflyent/fhttp v0.0.0-20211004035111-333f430cfbbf
 	golang.org/x/net v0.0.0-20211203184738-4852103109b8
