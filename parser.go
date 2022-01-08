@@ -2,7 +2,6 @@ package cclient
 
 import (
 	"bytes"
-	"compress/gzip"
 	"encoding/json"
 	http "github.com/useflyent/fhttp"
 	"io/ioutil"
@@ -12,6 +11,10 @@ import (
 
 // ParseJson closes body and decodes resp body to pointer
 func ParseJson(resp *http.Response, dataOut interface{}) error {
+	if !resp.Uncompressed {
+		resp.Body = http.DecompressBody(resp)
+	}
+
 	data, err := ioutil.ReadAll(resp.Body)
 
 	err = resp.Body.Close()
@@ -22,46 +25,9 @@ func ParseJson(resp *http.Response, dataOut interface{}) error {
 	ioreader := bytes.NewReader(data)
 
 	err = json.NewDecoder(ioreader).Decode(dataOut)
-	if err != nil {
-		gzipReader, err := gzip.NewReader(ioutil.NopCloser(bytes.NewBuffer(data)))
-		if err != nil {
-			return err
-		}
 
-		err = json.NewDecoder(gzipReader).Decode(dataOut)
-		if err != nil {
-			return err
-		}
-
-	}
-
-	return nil
-}
-
-// ParseJsonSafe closes body and decodes resp body to pointer
-// Tries a gzip decompress if error is encountered
-func ParseJsonSafe(resp *http.Response, dataOut interface{}) error {
-	data, err := ioutil.ReadAll(resp.Body)
-
-	err = resp.Body.Close()
 	if err != nil {
 		return err
-	}
-
-	ioreader := bytes.NewReader(data)
-
-	err = json.NewDecoder(ioreader).Decode(dataOut)
-	if err != nil {
-		gzipReader, err := gzip.NewReader(ioutil.NopCloser(bytes.NewBuffer(data)))
-		if err != nil {
-			return err
-		}
-
-		err = json.NewDecoder(gzipReader).Decode(dataOut)
-		if err != nil {
-			return err
-		}
-
 	}
 
 	return nil

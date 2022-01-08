@@ -67,4 +67,5 @@ func NewClient(clientHello utls.ClientHelloID, userAgent string, proxyUrl string
 		}, nil
 
 	}
+	
 }
